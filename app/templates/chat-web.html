@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Page</title>
+</head>
+<body>
+    <h1>Chat</h1>
+    <div id="usernameForm">
+        <input type="text" id="username" placeholder="Enter your username">
+        <button id="confirmUsername">Confirm</button>
+    </div>
+    <div id="chat" style="display: none;"></div>
+    <input type="text" id="message" placeholder="Enter your message" style="display: none;">
+    <button id="send" style="display: none;">Send</button>
+
+    <script>
+        const usernameForm = document.getElementById("usernameForm");
+        const usernameInput = document.getElementById("username");
+        const confirmUsernameButton = document.getElementById("confirmUsername");
+        const chatDiv = document.getElementById("chat");
+        const messageInput = document.getElementById("message");
+        const sendButton = document.getElementById("send");
+        let username = "";
+
+        confirmUsernameButton.onclick = () => {
+            username = usernameInput.value;
+            usernameForm.style.display = "none";
+            chatDiv.style.display = "block";
+            messageInput.style.display = "block";
+            sendButton.style.display = "block";
+        };
+
+        const socket = new WebSocket("ws://localhost:8000/api/v1/utils/chat/" + username);
+
+        socket.onmessage = (event) => {
+            const message = event.data;
+            chatDiv.innerHTML += `<p>${message}</p>`;
+        };
+
+        sendButton.onclick = () => {
+            const message = messageInput.value;
+            socket.send(message);
+            messageInput.value = "";
+        };
+    </script>
+</body>
+</html>

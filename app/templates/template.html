@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ data.title }}</title>
+  </head>
+  <style type="text/css">
+    @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      background: #f3f3f3;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+    .card {
+      border-radius: 10px;
+      background: white;
+      padding: 30px 10px 30px 10px;
+      box-shadow: 5px 5px 19px -6px rgba(0, 0, 0, 0.8);
+    }
+    .banner {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background: linear-gradient(45deg, #223b5a, #223b5a);
+    }
+    .banner h1 {
+      font-size: 40px;
+      font-weight: bold;
+      color: white;
+      max-inline-size: 200px;
+      line-height: 1.1;
+    }
+    .banner .line {
+      margin-left: 10px;
+      border-style: solid;
+      border-color: white;
+      border-width: 0.5px;
+      height: 80px;
+    }
+    .banner h2 {
+      font-size: 20px;
+      font-weight: lighter;
+      color: white;
+      padding-left: 10px;
+      font-style: italic;
+    }
+    .styled-table {
+      margin: 25px 0;
+      font-size: 0.9em;
+      font-family: sans-serif;
+      min-width: 400px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+    .styled-table thead tr {
+      background-color: #808080;
+      color: #ffffff;
+      text-align: left;
+    }
+    .styled-table th,
+    .styled-table td {
+      padding: 12px 15px;
+    }
+    .styled-table tbody tr {
+      border-bottom: 1px solid #dddddd;
+    }
+
+    .styled-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+
+    .styled-table tbody tr:last-of-type {
+      border-bottom: 2px solid #161616;
+    }
+    .styled-table tbody tr.active-row {
+      font-weight: bold;
+      color: #000000;
+    }
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+    }
+    .logo {
+      height: 50px;
+      margin-left: 170px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="banner">
+          <h1>ANALYTIC REPORT</h1>
+          <div class="line"></div>
+          <h2>Atlas des patrimoines</h2>
+          <img
+            class="logo"
+            src="file:///C:/Users/acrapart/Documents/dev/api/app/templates/static/septeo_logo.png"
+            alt="logo_septeo"
+          />
+        </div>
+
+        <p>
+          Dernière vérification : {{ data.last_update }} | Mise à jour : {{
+          data.update }}
+        </p>
+
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>data_type</th>
+              <th>layer_name</th>
+              <th>last_download</th>
+              <th>department_list</th>
+              <th>last_update</th>
+              <th>update_status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Dom</td>
+              <td>6000</td>
+              <td>6000</td>
+              <td>6000</td>
+              <td>6000</td>
+              <td>6000</td>
+            </tr>
+            <tr class="active-row">
+              <td>Melissa</td>
+              <td>5150</td>
+              <td>5150</td>
+              <td>5150</td>
+              <td>5150</td>
+              <td>5150</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="footer">Copyright © A.Crapart - Backend Team @2023</div>
+      </div>
+    </div>
+  </body>
+</html>
